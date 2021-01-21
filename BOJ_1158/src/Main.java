@@ -11,14 +11,14 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int n = Integer.parseInt(st.nextToken());
 		int k = Integer.parseInt(st.nextToken());
-		
+
 		Queue<Integer> queue = new LinkedList<>();
-		
+
 		for (int i = 1; i <= n; i++) {
 			queue.add(i);
 		}
 		System.out.print("<");
-		
+
 		while(queue.size() != 1) {
 			for (int j = 0; j < k - 1; j++) {
 				queue.add(queue.poll());
@@ -26,5 +26,5 @@ public class Main {
 			System.out.print(queue.poll() + ", ");
 		}
 		System.out.println(queue.poll() + ">");
-		}
 	}
+}
