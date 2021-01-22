@@ -12,28 +12,34 @@ public class Main {
 		int n = Integer.parseInt(st.nextToken());
 
 		String[] inputArr = new String[n];
-		int[] lenArr = new int[n];
 
 		for (int i = 0; i < n; i++) {
 			String str = br.readLine();
 			inputArr[i] = str;
-			lenArr[i] = str.length();
 		}
 
-		Arrays.sort(inputArr, Comparator.comparing(String::length));
-
-		for (int i = 0; i < n - 1; i++) {
-			if (!inputArr[i].equals(inputArr[i + 1])) {
-				if (inputArr[i].length() == inputArr[i + 1].length()) {
-					Arrays.toString(inputArr);
-					System.out.print(inputArr[i] + " ");
+		
+		Arrays.sort(inputArr, new Comparator<String>() {
+			public int compare(String s1, String s2) {
+				if (s1.length() == s2.length()) {
+					return s1.compareTo(s2);
 				}
-				else
-					System.out.print(inputArr[i] + " ");
+				else {
+					return s1.length() - s2.length();
+				}
 			}
-			if (!inputArr[n - 1].equals(inputArr[n - 2]))
-				System.out.print(inputArr[n - 1] + " ");
+		});
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(inputArr[0]).append('\n');
+		
+		for (int i = 1; i < n; i++) {
+			if (!inputArr[i].equals(inputArr[i-1])) {
+				sb.append(inputArr[i]).append('\n');
+			}
 		}
-
+		System.out.println(sb);
+		br.close();
 	}
 }
