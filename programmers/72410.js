@@ -56,6 +56,7 @@ function min_three(id) {
     
     return result;
 }
+
 function solution(new_id) {
     var answer = new_id.toLowerCase();
     answer = del_char(answer);
@@ -65,5 +66,5 @@ function solution(new_id) {
     answer = answer.substring(0, 15);
     answer = first_dot(answer);
     answer = min_three(answer);
-    console.log(answer);
+    return answer;
 }
